@@ -1,6 +1,6 @@
 {
   "name": "create-gemini-agent",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "type": "module",
   "bin": {
     "create-gemini-agent": "./dist/index.js",
@@ -8,8 +8,9 @@
   },
   "scripts": {
     "dev": "tsx index.ts",
-    "build": "tsup index.ts --format esm --clean",
-    "prepublishOnly": "npm run build"
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "version": "node -e \"const pkg=require('./package.json'); const ext=require('./gemini-extension.json'); ext.version=pkg.version; require('fs').writeFileSync('gemini-extension.json', JSON.stringify(ext, null, 2) + '\\n');\""
   },
   "description": "An interactive subagent creator for the Gemini CLI",
   "devDependencies": {
